@@ -99,13 +99,6 @@ public class BasicController {
         addUsers(model);
         return "basic/each";
     }
-    private void addUsers(Model model) {
-        List<User> list = new ArrayList<>();
-        list.add(new User("userA", 10));
-        list.add(new User("userB", 20));
-        list.add(new User("userC", 30));
-        model.addAttribute("users", list);
-    }
 
     @GetMapping("/condition")
     public String condition(Model model) {
@@ -119,6 +112,12 @@ public class BasicController {
         return "basic/comments";
     }
 
+    @GetMapping("/block")
+    public String block(Model model) {
+        addUsers(model);
+        return "basic/block";
+    }
+
     @Data
     static class User{
         private String username;
@@ -128,6 +127,14 @@ public class BasicController {
             this.username = username;
             this.age = age;
         }
+    }
+
+    private void addUsers(Model model) {
+        List<User> list = new ArrayList<>();
+        list.add(new User("userA", 10));
+        list.add(new User("userB", 20));
+        list.add(new User("userC", 30));
+        model.addAttribute("users", list);
     }
 
 }
